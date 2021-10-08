@@ -1,21 +1,16 @@
-FROM ubuntu:latest
- 
-#
-# Identify the maintainer of an image
-LABEL maintainer="myname@somecompany.com"
- 
-#
-# Update the image to the latest packages
-RUN apt-get update && apt-get upgrade -y
- 
-#
-# Install NGINX to test.
-RUN apt-get install nginx -y
- 
-#
-# Expose port 80
-EXPOSE 80
- 
-#
-# Last is the actual command to start up NGINX within our Container
-CMD ["nginx", "-g", "daemon off;"]
+FROM node
+
+RUN apt-get update && apt-get upgrade -y \
+    && apt-get clean
+
+RUN mkdir /app
+WORKDIR /app
+
+COPY package.json /app/
+RUN npm install --only=production
+
+COPY src /app/src
+
+EXPOSE 3000
+
+CMD [ "npm", "start" ]
