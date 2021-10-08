@@ -1,61 +1,41 @@
-pipeline { 
-2
-    environment { 
-3
-        registry = "kaenriquez/docker-test" 
-4
-        registryCredential = 'dockerhub' 
-5
-        dockerImage = '' 
-6
-    }
-7
-    agent any 
-8
-    stages { 
-14
-        stage('Building our image') { 
-15
-            steps { 
-16
-                script { 
-17
-                    dockerImage = docker.build registry + ":$BUILD_NUMBER" 
-18
-                }
-19
-            } 
-20
+pipeline {
+  environment {
+    imagename = "yenigul/hacicenkins"
+    registryCredential = 'dockerhub'
+    dockerImage = ''
+  }
+  agent any
+  stages {
+   // stage('Cloning Git') {
+   //   steps {
+   //     git([url: 'https://github.com/ismailyenigul/hacicenkins.git', branch: 'master', credentialsId: 'ismailyenigul-github-user-token'])
+
+   //   }
+//}
+    stage('Building image') {
+      steps{
+        script {
+          dockerImage = docker.build imagename
         }
-21
-        stage('Deploy our image') { 
-22
-            steps { 
-23
-                script { 
-24
-                    docker.withRegistry( '', registryCredential ) { 
-25
-                        dockerImage.push() 
-26
-                    }
-27
-                } 
-28
-            }
-29
-        } 
-30
-        stage('Cleaning up') { 
-31
-            steps { 
-32
-                sh "docker rmi $registry:$BUILD_NUMBER" 
-33
-            }
-34
-        } 
-35
+      }
     }
-36
+    stage('Deploy Image') {
+      steps{
+        script {
+          docker.withRegistry( '', registryCredential ) {
+            dockerImage.push("$BUILD_NUMBER")
+             dockerImage.push('latest')
+
+          }
+        }
+      }
+    }
+    stage('Remove Unused docker image') {
+      steps{
+        sh "docker rmi $imagename:$BUILD_NUMBER"
+         sh "docker rmi $imagename:latest"
+
+      }
+    }
+  }
 }
