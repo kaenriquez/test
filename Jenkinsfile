@@ -13,16 +13,6 @@ pipeline {
     agent any 
 8
     stages { 
-9
-        stage('Cloning our Git') { 
-10
-            steps { 
-11
-                git 'https://github.com/YourGithubAccount/YourGithubRepository.git' 
-12
-            }
-13
-        } 
 14
         stage('Building our image') { 
 15
