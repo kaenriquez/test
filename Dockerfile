@@ -1,9 +1,16 @@
-FROM node:8.11-slim
+FROM node
 
-WORKDIR /usr/node
-WORKDIR app
+RUN apt-get update && apt-get upgrade -y \
+    && apt-get clean
 
-RUN pwd
+RUN mkdir /app
+WORKDIR /app
 
-# command executable and version
-ENTRYPOINT ["node"]
+COPY package.json /app/
+RUN npm install --only=production
+
+COPY src /app/src
+
+EXPOSE 3000
+
+CMD [ "npm", "start" ]
