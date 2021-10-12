@@ -12,9 +12,12 @@ pipeline {
       }
     }
     stage('Building image') {
-      steps{
-        script {
-          dockerImage = docker.build registry + ":$BUILD_NUMBER"
+        agent {
+          docker {
+            
+                  reuseNode true
+                  image "apache"
+        // dockerImage = docker.build registry + ":$BUILD_NUMBER"
         }
       }
     }
