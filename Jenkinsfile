@@ -1,26 +1,36 @@
 pipeline {
+  environment {
+    registry = "kaenriquez/docker-test"
+    registryCredential = 'docker'
+    dockerImage = ''
+  }
   agent any
-    
-  tools {nodejs "node"}
-    
   stages {
-        
     stage('Cloning Git') {
       steps {
         git 'https://github.com/kaenriquez/test.git'
       }
     }
-        
-    stage('Install dependencies') {
-      steps {
-        sh 'npm install'
+    stage('Building image') {
+      steps{
+        script {
+          dockerImage = docker.build registry + ":$BUILD_NUMBER"
+        }
       }
     }
-     
-    stage('Test') {
-      steps {
-         sh 'npm test'
+    stage('Deploy Image') {
+      steps{
+        script {
+          docker.withRegistry( '', registryCredential ) {
+            dockerImage.push()
+          }
+        }
       }
-    }      
+    }
+    stage('Remove Unused docker image') {
+      steps{
+        sh "docker rmi $registry:$BUILD_NUMBER"
+      }
+    }
   }
 }
