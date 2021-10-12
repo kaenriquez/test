@@ -12,7 +12,7 @@ pipeline {
       }
     }
     stage('Building image') {
-        agent {
+        steps {
           docker {
             
                   reuseNode true
