@@ -1,7 +1,7 @@
 pipeline {
   environment {
-    registry = "kaenriquez/docker-test"
-    registryCredential = 'docker'
+    registry = "test"
+    registryUrl = 'https://192.168.254.162:5000'
     dockerImage = ''
   }
   agent any
@@ -22,7 +22,7 @@ pipeline {
     stage('Deploy Image') {
       steps{
         script {
-          docker.withRegistry( '', registryCredential ) {
+          docker.withRegistry(registryUrl) {
             dockerImage.push()
           }
         }
