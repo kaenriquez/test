@@ -1,4 +1,4 @@
-FROM ubuntu:18.10
+FROM ubuntu
 
 
 RUN apt-get update && apt-get -y install apache2
