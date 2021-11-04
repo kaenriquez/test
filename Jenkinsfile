@@ -4,9 +4,9 @@ pipeline {
   environment {
     registryUrl = '192.168.254.162:5000'
     
-    PORT ='8087'
+    PORT ='8090'
     EXPOSE_PORT ='8080'
-    name ='sampie'
+    name ='sample_image'
     dockerImage = ''
    // DEV_SSH_USER = credentials('sshuser')
    DOCKER_SERVER = 'ssh://kath@192.168.254.169'
