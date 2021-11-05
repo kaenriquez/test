@@ -6,7 +6,7 @@ pipeline {
     
     PORT ='8060'
     EXPOSE_PORT ='8080'
-    name ='APACHE2'
+    name ='apache2'
     dockerImage = ''
    // DEV_SSH_USER = credentials('sshuser')
    DOCKER_SERVER = 'ssh://kath@192.168.254.176'
