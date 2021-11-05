@@ -2,14 +2,14 @@ def DOCKER_IMAGE_NAME
 def VERSION
 pipeline {
   environment {
-    registryUrl = '192.168.254.162:5000'
+    registryUrl = '192.168.254.174:5000'
     
-    PORT ='8090'
+    PORT ='8040'
     EXPOSE_PORT ='8080'
     name ='sample_image'
     dockerImage = ''
    // DEV_SSH_USER = credentials('sshuser')
-   DOCKER_SERVER = 'ssh://kath@192.168.254.169'
+   DOCKER_SERVER = 'ssh://kath@192.168.254.176'
   }
   agent any
   stages {
