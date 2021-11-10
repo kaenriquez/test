@@ -4,12 +4,12 @@ pipeline {
   environment {
     registryUrl = '10.201.1.26:5000'
     
-    PORT ='8060'
+    PORT ='8080'
     EXPOSE_PORT ='8080'
     name ='apache2'
     dockerImage = ''
    // DEV_SSH_USER = credentials('sshuser')
-   DOCKER_SERVER = 'ssh://kath@10.201.1.27'
+   DOCKER_SERVER = 'ssh://kath@10.201.1.29'
   }
   agent any
   stages {
