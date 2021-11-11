@@ -4,9 +4,9 @@ pipeline {
   environment {
     registryUrl = '10.201.1.26:5000'
     
-    PORT ='8081'
+    PORT ='8082'
     EXPOSE_PORT ='8080'
-    name ='apache2'
+    name ='apache'
     dockerImage = ''
    // DEV_SSH_USER = credentials('sshuser')
    DOCKER_SERVER = 'ssh://kath@10.201.1.29'
