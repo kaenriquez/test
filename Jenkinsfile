@@ -4,7 +4,7 @@ pipeline {
   environment {
     registryUrl = '10.201.1.26:5000'
     
-    PORT ='8080'
+    PORT ='8081'
     EXPOSE_PORT ='8080'
     name ='apache2'
     dockerImage = ''
