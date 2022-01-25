@@ -10,7 +10,7 @@ RUN apt-get update && apt-get upgrade -y
  
 #
 # Install NGINX to test.
-RUN apt-get install keycloak -y
+RUN apt-get install nginx -y
  
 #
 # Expose port 80
@@ -18,4 +18,4 @@ EXPOSE 80
  
 #
 # Last is the actual command to start up NGINX within our Container
-CMD ["keycloak", "-g", "daemon off;"]
+CMD ["nginx", "-g", "daemon off;"]
