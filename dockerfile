@@ -11,7 +11,7 @@ ENV DB_USER=keycloak
 ENV DB_PASSWORD=@Keycloak15653
 
 
-ADD tools /opt/jboss/tools
+// ADD tools /opt/jboss/tools
 	
 RUN mkdir -p /home/kath
 
