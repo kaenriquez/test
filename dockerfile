@@ -19,11 +19,6 @@ ENV LAUNCH_JBOSS_IN_BACKGROUND 1
 ENV JBOSS_HOME /opt/jboss/keycloak
 ENV LANG en_US.UTF-8
 
-ADD tools /opt/jboss/tools
-RUN /opt/jboss/tools/build-keycloak.sh
-
-USER 1000
-
 EXPOSE 8080
 EXPOSE 8443
 
