@@ -17,7 +17,7 @@ EXPOSE 8080
 EXPOSE 8443
 
 
-
+ENTRYPOINT [ "/opt/jboss/tools/docker-entrypoint.sh" ]
 CMD ["jboss/keycloak", "0.0.0.0"]
 
 
