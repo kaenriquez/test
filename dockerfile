@@ -18,7 +18,23 @@ ENV DB_PASSWORD=@Keycloak15653
 ENV LAUNCH_JBOSS_IN_BACKGROUND 1
 ENV JBOSS_HOME /opt/jboss/keycloak
 ENV LANG en_US.UTF-8
-	
+
+RUN microdnf update -y && microdnf install -y glibc-langpack-en gzip hostname java-11-openjdk-headless openssl tar which && microdnf clean all
+
+ADD tools /opt/jboss/tools
+RUN /opt/jboss/tools/build-keycloak.sh
+
+USER 1000
+
+EXPOSE 8080
+EXPOSE 8443
+
+ENTRYPOINT [ "/opt/jboss/tools/docker-entrypoint.sh" ]
+
+CMD ["-b", "0.0.0.0"]
+Source Repository
+Github
+
 RUN mkdir -p /home/kath
 ADD tools /opt/jboss/tools
 RUN /opt/jboss/tools/build-keycloak.sh
