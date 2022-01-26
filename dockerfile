@@ -21,7 +21,7 @@ ENV LANG en_US.UTF-8
 
 
 
-RUN mkdir -p /opt/jboss/tools
+RUN mkdir -p home/kath/opt/jboss/tools
 
 ADD tools /opt/jboss/tools
 RUN /opt/jboss/tools/build-keycloak.sh
