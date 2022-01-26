@@ -23,8 +23,6 @@ ARG GIT_REPO
 ARG GIT_BRANCH
 ARG KEYCLOAK_DIST=https://github.com/keycloak/keycloak/releases/download/$KEYCLOAK_VERSION/keycloak-$KEYCLOAK_VERSION.tar.gz
 
-RUN microdnf update -y && microdnf install -y glibc-langpack-en gzip hostname java-11-openjdk-headless openssl tar which && microdnf clean all
-
 ADD tools /opt/jboss/tools
 RUN /opt/jboss/tools/build-keycloak.sh
 
