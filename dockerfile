@@ -12,7 +12,7 @@ ENV DB_PASSWORD=@Keycloak15653
 
 	
 RUN mkdir -p /home/kath
-
+RUN /opt/jboss/tools/build-keycloak.sh
 EXPOSE 8080	
 EXPOSE 8443
 
