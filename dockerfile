@@ -10,7 +10,7 @@ ENV DB_DATABASE=keycloak
 ENV DB_USER=keycloak 
 ENV DB_PASSWORD=@Keycloak15653
 
-ADD host=HOST:192.168.179.159
+
 ADD tools /opt/jboss/tools
 	
 RUN mkdir -p /home/kath
