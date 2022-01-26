@@ -16,7 +16,7 @@ ENV LANG en_US.UTF-8
 
 
 RUN mkdir -p /home/kath
-ADD tools /opt/jboss/tools
+
 RUN /opt/jboss/tools/build-keycloak.sh
 EXPOSE 8080	
 EXPOSE 8443
