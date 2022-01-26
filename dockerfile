@@ -18,6 +18,6 @@ EXPOSE 8443
 
 
 
-CMD ["keycloak", "0.0.0.0"]
+CMD ["jboss/keycloak", "0.0.0.0"]
 
 
