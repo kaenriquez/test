@@ -20,7 +20,7 @@ ENV JBOSS_HOME /opt/jboss/keycloak
 ENV LANG en_US.UTF-8
 
 
-RUN mkdir -p home/kath/opt/jboss
+RUN mkdir -p opt/jboss/tools/docker-entrypoint.sh
 RUN microdnf update -y && microdnf install -y glibc-langpack-en gzip hostname java-11-openjdk-headless openssl tar which && microdnf clean all
 
 
