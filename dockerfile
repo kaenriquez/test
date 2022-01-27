@@ -27,6 +27,8 @@ RUN microdnf update -y && microdnf install -y glibc-langpack-en gzip hostname ja
 
 
 
+RUN /opt/jboss/tools/build-keycloak.sh
+
 
 EXPOSE 8080	
 EXPOSE 8443
