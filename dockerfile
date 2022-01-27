@@ -26,7 +26,7 @@ RUN microdnf update -y && microdnf install -y glibc-langpack-en gzip hostname ja
 
 
 
-RUN chmod 777 docker-entrypoint.sh
+
 
 EXPOSE 8080	
 EXPOSE 8443
