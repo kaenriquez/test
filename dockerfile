@@ -24,14 +24,6 @@ ARG GIT_BRANCH
 
 ARG KEYCLOAK_DIST=https://github.com/keycloak/keycloak/releases/download/$KEYCLOAK_VERSION/keycloak-$KEYCLOAK_VERSION.tar.gz
 
-USER root
-
-
-
-
-RUN /opt/jboss/tools/build-keycloak.sh
-
-USER 1000
 
 EXPOSE 8080
 EXPOSE 8443
