@@ -28,7 +28,7 @@ USER root
 
 
 
-ADD tools /opt/jboss/tools
+
 RUN /opt/jboss/tools/build-keycloak.sh
 
 USER 1000
